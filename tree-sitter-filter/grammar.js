@@ -11,6 +11,7 @@ module.exports = grammar({
       $.not_expression,
       $.in_expression,
       $.parenthesized,
+      $.contains_expression,
     ),
     comparison: $ => seq(
       field('field', $.identifier),
@@ -42,6 +43,12 @@ module.exports = grammar({
       repeat(seq(',', $._value)),
       ')',
     ),
+    contains_expression: $ => seq(
+      field('field', $.identifier),
+      'contains',
+      field('value', $._value),
+    ),
+
 
     parenthesized: $ => seq('(', $._expr, ')'),
     _value: $ => choice($.string, $.number, $.boolean),

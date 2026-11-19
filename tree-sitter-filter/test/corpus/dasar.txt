@@ -104,3 +104,16 @@ status in ("open", "pending", "waiting")
       (string)
       (string)
       (string))))
+
+==================
+contains untuk pencarian teks
+==================
+
+title contains "invoice"
+
+---
+
+(query
+  (contains_expression
+    field: (identifier)
+    value: (string)))

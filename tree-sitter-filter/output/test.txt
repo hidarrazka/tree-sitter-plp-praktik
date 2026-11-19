@@ -5,6 +5,7 @@
       4. Γ£ô [32mnot dengan boolean[0m
       5. Γ£ô [32mtiga jenis nilai[0m
       6. Γ£ô [32min dengan tiga nilai[0m
+      7. Γ£ô [32mcontains untuk pencarian teks[0m
 
-Total parses: 6; successful parses: 6; failed parses: 0; success percentage: 100.00%; average speed: 2460 bytes/ms
+Total parses: 7; successful parses: 7; failed parses: 0; success percentage: 100.00%; average speed: 1901 bytes/ms
 
