@@ -4,6 +4,7 @@
       3. Γ£ô [32mkurung mengubah prioritas[0m
       4. Γ£ô [32mnot dengan boolean[0m
       5. Γ£ô [32mtiga jenis nilai[0m
+      6. Γ£ô [32min dengan tiga nilai[0m
 
-Total parses: 5; successful parses: 5; failed parses: 0; success percentage: 100.00%; average speed: 1858 bytes/ms
+Total parses: 6; successful parses: 6; failed parses: 0; success percentage: 100.00%; average speed: 2460 bytes/ms
 

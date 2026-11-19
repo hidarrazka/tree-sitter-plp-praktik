@@ -88,3 +88,19 @@ status = "open" and priority >= 2 and aktif = false
     right: (comparison
       field: (identifier)
       value: (boolean))))
+
+==================
+in dengan tiga nilai
+==================
+
+status in ("open", "pending", "waiting")
+
+---
+
+(query
+  (in_expression
+    field: (identifier)
+    values: (value_list
+      (string)
+      (string)
+      (string))))
