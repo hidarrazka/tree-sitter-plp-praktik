@@ -1,0 +1,3 @@
+﻿uji\todo.py:1: # TODO: tambahkan validasi input
+uji\todo.py:3: # FIXME: belum menangani tipe string
+uji\todo.py:7: # TODO: buat unit test untuk fungsi ini
