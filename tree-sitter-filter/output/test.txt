@@ -1,0 +1,9 @@
+﻿  dasar:
+      1. Γ£ô [32mperbandingan tunggal[0m
+      2. Γ£ô [32mand lebih kuat dari or[0m
+      3. Γ£ô [32mkurung mengubah prioritas[0m
+      4. Γ£ô [32mnot dengan boolean[0m
+      5. Γ£ô [32mtiga jenis nilai[0m
+
+Total parses: 5; successful parses: 5; failed parses: 0; success percentage: 100.00%; average speed: 1858 bytes/ms
+

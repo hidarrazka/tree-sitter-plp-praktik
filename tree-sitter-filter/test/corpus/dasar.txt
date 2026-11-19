@@ -1,0 +1,90 @@
+==================
+perbandingan tunggal
+==================
+
+status = "open"
+
+---
+
+(query
+  (comparison
+    field: (identifier)
+    value: (string)))
+
+==================
+and lebih kuat dari or
+==================
+
+a = 1 or b = 2 and c = 3
+
+---
+
+(query
+  (or_expression
+    left: (comparison
+      field: (identifier)
+      value: (number))
+    right: (and_expression
+      left: (comparison
+        field: (identifier)
+        value: (number))
+      right: (comparison
+        field: (identifier)
+        value: (number)))))
+
+==================
+kurung mengubah prioritas
+==================
+
+(a = 1 or b = 2) and c = 3
+
+---
+
+(query
+  (and_expression
+    left: (parenthesized
+      (or_expression
+        left: (comparison
+          field: (identifier)
+          value: (number))
+        right: (comparison
+          field: (identifier)
+          value: (number))))
+    right: (comparison
+      field: (identifier)
+      value: (number))))
+
+==================
+not dengan boolean
+==================
+
+not archived = true
+
+---
+
+(query
+  (not_expression
+    operand: (comparison
+      field: (identifier)
+      value: (boolean))))
+
+==================
+tiga jenis nilai
+==================
+
+status = "open" and priority >= 2 and aktif = false
+
+---
+
+(query
+  (and_expression
+    left: (and_expression
+      left: (comparison
+        field: (identifier)
+        value: (string))
+      right: (comparison
+        field: (identifier)
+        value: (number)))
+    right: (comparison
+      field: (identifier)
+      value: (boolean))))
