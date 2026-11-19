@@ -1,0 +1,35 @@
+﻿tree-sitter-filter\contoh.filter
+  pattern: 0
+    capture: 0 - keyword, start: (0, 0), end: (0, 3), text: `not`
+  pattern: 6
+    capture: 5 - property, start: (0, 5), end: (0, 11), text: `status`
+  pattern: 0
+    capture: 0 - keyword, start: (0, 12), end: (0, 14), text: `in`
+  pattern: 2
+    capture: 2 - string, start: (0, 16), end: (0, 22), text: `"open"`
+  pattern: 2
+    capture: 2 - string, start: (0, 24), end: (0, 33), text: `"pending"`
+  pattern: 0
+    capture: 0 - keyword, start: (0, 35), end: (0, 37), text: `or`
+  pattern: 7
+    capture: 5 - property, start: (0, 38), end: (0, 43), text: `title`
+  pattern: 0
+    capture: 0 - keyword, start: (0, 44), end: (0, 52), text: `contains`
+  pattern: 2
+    capture: 2 - string, start: (0, 53), end: (0, 62), text: `"invoice"`
+  pattern: 0
+    capture: 0 - keyword, start: (0, 64), end: (0, 67), text: `and`
+  pattern: 5
+    capture: 5 - property, start: (0, 68), end: (0, 76), text: `priority`
+  pattern: 1
+    capture: 1 - operator, start: (0, 77), end: (0, 79), text: `>=`
+  pattern: 3
+    capture: 3 - number, start: (0, 80), end: (0, 81), text: `2`
+  pattern: 0
+    capture: 0 - keyword, start: (0, 82), end: (0, 85), text: `and`
+  pattern: 5
+    capture: 5 - property, start: (0, 86), end: (0, 91), text: `aktif`
+  pattern: 1
+    capture: 1 - operator, start: (0, 92), end: (0, 93), text: `=`
+  pattern: 4
+    capture: 4 - constant.builtin, start: (0, 94), end: (0, 98), text: `true`

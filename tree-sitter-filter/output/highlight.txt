@@ -1,1 +1,1 @@
-﻿not (status in ([38;5;28m"open"[0m, [38;5;28m"pending"[0m) or title contains [38;5;28m"invoice"[0m) and priority >= [1m[38;5;94m2[0m and aktif = [1m[38;5;94mtrue[0m
+﻿[38;5;56mnot[0m ([38;5;124mstatus[0m [38;5;56min[0m ([38;5;28m"open"[0m, [38;5;28m"pending"[0m) [38;5;56mor[0m [38;5;124mtitle[0m [38;5;56mcontains[0m [38;5;28m"invoice"[0m) [38;5;56mand[0m [38;5;124mpriority[0m [1m[38;5;239m>=[0m [1m[38;5;94m2[0m [38;5;56mand[0m [38;5;124maktif[0m [1m[38;5;239m=[0m [1m[38;5;94mtrue[0m
