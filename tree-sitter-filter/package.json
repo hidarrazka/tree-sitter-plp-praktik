@@ -1,0 +1,12 @@
+{
+  "name": "tree-sitter-filter",
+  "version": "0.1.0",
+  "description": "Grammar DSL filter untuk kotak pencarian lanjutan halaman admin",
+  "main": "bindings/node",
+  "keywords": [
+    "tree-sitter",
+    "parser",
+    "filter"
+  ],
+  "license": "MIT"
+}

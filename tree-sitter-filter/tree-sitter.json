@@ -1,0 +1,33 @@
+{
+  "grammars": [
+    {
+      "name": "filter",
+      "camelcase": "Filter",
+      "title": "Filter",
+      "scope": "source.filter",
+      "file-types": [
+        "filter"
+      ],
+      "highlights": "queries/highlights.scm",
+      "injection-regex": "^filter$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Grammar DSL filter untuk kotak pencarian lanjutan halaman admin",
+    "authors": [
+      {
+        "name": "Mahasiswa"
+      }
+    ]
+  },
+  "bindings": {
+    "c": true,
+    "node": false,
+    "python": false,
+    "rust": false,
+    "swift": false,
+    "go": false
+  }
+}
