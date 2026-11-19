@@ -1,0 +1,7 @@
+src\itsdangerous\serializer.py:190: fungsi '__init__' 45 baris
+src\itsdangerous\signer.py:129: fungsi '__init__' 45 baris
+src\itsdangerous\signer.py:182: fungsi 'derive_key' 32 baris
+src\itsdangerous\timed.py:182: # TODO: Signature is incompatible because parameters were added
+src\itsdangerous\timed.py:72: fungsi 'unsign' 87 baris
+src\itsdangerous\timed.py:185: fungsi 'loads' 36 baris
+src\itsdangerous\url_safe.py:23: fungsi 'load_payload' 31 baris
