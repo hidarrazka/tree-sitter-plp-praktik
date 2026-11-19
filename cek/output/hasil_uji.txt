@@ -1,3 +1,4 @@
-﻿uji\todo.py:1: # TODO: tambahkan validasi input
+﻿uji\fungsi_panjang.py:1: fungsi 'hitung_statistik' 48 baris
+uji\todo.py:1: # TODO: tambahkan validasi input
 uji\todo.py:3: # FIXME: belum menangani tipe string
 uji\todo.py:7: # TODO: buat unit test untuk fungsi ini
