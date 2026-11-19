@@ -10,7 +10,7 @@ module.exports = grammar({
       choice('=', '!=', '>', '<', '>=', '<='),
       choice($.string, $.number),
     ),
-    and_expression: $ => seq($._expr, 'and', $._expr),
+    and_expression: $ => prec.left(seq($._expr, 'and', $._expr)),
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_.]*/,
     string: $ => /"[^"]*"/,
     number: $ => /\d+(\.\d+)?/,

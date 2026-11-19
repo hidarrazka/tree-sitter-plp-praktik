@@ -1,9 +1,8 @@
 ﻿(query [0, 0] - [0, 15]
-  (ERROR [0, 0] - [0, 9]
-    (identifier [0, 0] - [0, 1])
-    (number [0, 4] - [0, 5])
-    (identifier [0, 6] - [0, 9]))
-  (comparison [0, 10] - [0, 15]
-    (identifier [0, 10] - [0, 11])
-    (number [0, 14] - [0, 15])))
-contoh.filter	Parse:    0.80 ms	    18 bytes/ms	(ERROR [0, 0] - [0, 9])
+  (and_expression [0, 0] - [0, 15]
+    (comparison [0, 0] - [0, 5]
+      (identifier [0, 0] - [0, 1])
+      (number [0, 4] - [0, 5]))
+    (comparison [0, 10] - [0, 15]
+      (identifier [0, 10] - [0, 11])
+      (number [0, 14] - [0, 15]))))
