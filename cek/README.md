@@ -35,7 +35,7 @@ Dari folder `uji/`:
 
 ```
 uji\fungsi_panjang.py:1: fungsi 'hitung_statistik' 48 baris
-uji\rusak.py:5: ERROR
+uji\rusak.py:1: ERROR
 uji\todo.py:1: # TODO: tambahkan validasi input
 uji\todo.py:7: # TODO: buat unit test untuk fungsi ini
 uji\todo.py:3: # FIXME: belum menangani tipe string

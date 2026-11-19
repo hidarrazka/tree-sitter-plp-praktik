@@ -20,10 +20,6 @@ def cek_todo(path, tree):
         print(f"{path}:{node.start_point[0] + 1}: {teks}")
 
 
-def cek_file(path):
-    tree = parser.parse(path.read_bytes())
-    cek_todo(path, tree)
-
 def cek_fungsi_panjang(path, tree):
     for _, cap in QueryCursor(Q_FUNGSI).matches(tree.root_node):
         fungsi = cap["fungsi"][0]
@@ -33,24 +29,6 @@ def cek_fungsi_panjang(path, tree):
             baris = fungsi.start_point[0] + 1
             print(f"{path}:{baris}: fungsi '{nama}' {jumlah_baris} baris")
 
-def cek_file(path):
-    tree = parser.parse(path.read_bytes())
-    cek_todo(path, tree)
-    cek_fungsi_panjang(path, tree)
-    cek_error(path, tree)
-
-
-
-def main():
-    if len(sys.argv) < 2:
-        print("Pakai: python cek.py <folder>")
-        return
-
-    folder = Path(sys.argv[1])
-    for path in folder.rglob("*.py"):
-        if any(bagian in FOLDER_DILEWATI for bagian in path.parts):
-            continue
-        cek_file(path)
 
 def cari_error(node):
     if node.is_error or node.is_missing:
@@ -76,6 +54,25 @@ def cek_error(path, tree):
         print(f"{path}:{baris}: MISSING '{node.type}'")
     else:
         print(f"{path}:{baris}: ERROR")
+
+
+def cek_file(path):
+    tree = parser.parse(path.read_bytes())
+    cek_todo(path, tree)
+    cek_fungsi_panjang(path, tree)
+    cek_error(path, tree)
+
+
+def main():
+    if len(sys.argv) < 2:
+        print("Pakai: python cek.py <folder>")
+        return
+
+    folder = Path(sys.argv[1])
+    for path in folder.rglob("*.py"):
+        if any(bagian in FOLDER_DILEWATI for bagian in path.parts):
+            continue
+        cek_file(path)
 
 
 if __name__ == "__main__":
