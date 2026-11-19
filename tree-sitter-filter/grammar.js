@@ -4,7 +4,7 @@ module.exports = grammar({
   word: $ => $.identifier,
   rules: {
     query: $ => $._expr,
-    _expr: $ => choice($.comparison, $.and_expression, $.or_expression),
+    _expr: $ => choice($.comparison, $.and_expression, $.or_expression),parenthesized: $ => seq('(', $._expr, ')'),
     comparison: $ => seq(
       $.identifier,
       choice('=', '!=', '>', '<', '>=', '<='),

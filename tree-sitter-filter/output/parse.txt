@@ -1,12 +1,17 @@
-﻿(query [0, 0] - [0, 24]
-  (or_expression [0, 0] - [0, 24]
-    (comparison [0, 0] - [0, 5]
-      (identifier [0, 0] - [0, 1])
-      (number [0, 4] - [0, 5]))
-    (and_expression [0, 9] - [0, 24]
-      (comparison [0, 9] - [0, 14]
-        (identifier [0, 9] - [0, 10])
-        (number [0, 13] - [0, 14]))
-      (comparison [0, 19] - [0, 24]
-        (identifier [0, 19] - [0, 20])
-        (number [0, 23] - [0, 24])))))
+﻿(query [0, 0] - [0, 26]
+  (ERROR [0, 0] - [0, 1]
+    (ERROR [0, 0] - [0, 1]))
+  (or_expression [0, 1] - [0, 26]
+    (comparison [0, 1] - [0, 6]
+      (identifier [0, 1] - [0, 2])
+      (number [0, 5] - [0, 6]))
+    (and_expression [0, 10] - [0, 26]
+      (comparison [0, 10] - [0, 15]
+        (identifier [0, 10] - [0, 11])
+        (number [0, 14] - [0, 15]))
+      (ERROR [0, 15] - [0, 16]
+        (ERROR [0, 15] - [0, 16]))
+      (comparison [0, 21] - [0, 26]
+        (identifier [0, 21] - [0, 22])
+        (number [0, 25] - [0, 26])))))
+contoh.filter	Parse:    0.09 ms	   302 bytes/ms	(ERROR [0, 0] - [0, 1])
