@@ -37,6 +37,8 @@ def cek_file(path):
     tree = parser.parse(path.read_bytes())
     cek_todo(path, tree)
     cek_fungsi_panjang(path, tree)
+    cek_error(path, tree)
+
 
 
 def main():
@@ -49,6 +51,31 @@ def main():
         if any(bagian in FOLDER_DILEWATI for bagian in path.parts):
             continue
         cek_file(path)
+
+def cari_error(node):
+    if node.is_error or node.is_missing:
+        return node
+    for anak in node.children:
+        hasil = cari_error(anak)
+        if hasil is not None:
+            return hasil
+    return None
+
+
+def cek_error(path, tree):
+    if not tree.root_node.has_error:
+        return
+
+    node = cari_error(tree.root_node)
+    if node is None:
+        print(f"{path}:1: ERROR (lokasi tidak diketahui)")
+        return
+
+    baris = node.start_point[0] + 1
+    if node.is_missing:
+        print(f"{path}:{baris}: MISSING '{node.type}'")
+    else:
+        print(f"{path}:{baris}: ERROR")
 
 
 if __name__ == "__main__":
