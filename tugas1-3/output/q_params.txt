@@ -1,0 +1,4 @@
+﻿hitung_luas: 2 parameter
+sapa: 1 parameter
+__init__: 2 parameter
+cetak: 1 parameter

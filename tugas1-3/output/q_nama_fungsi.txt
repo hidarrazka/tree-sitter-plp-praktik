@@ -1,0 +1,4 @@
+﻿@nama  baris 7: hitung_luas
+@nama  baris 14: sapa
+@nama  baris 19: __init__
+@nama  baris 22: cetak
