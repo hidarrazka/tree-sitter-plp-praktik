@@ -1,0 +1,51 @@
+﻿============================================================
+1. Fungsi
+============================================================
+(module (function_definition name: (identifier) parameters: (parameters (identifier)) body: (block (return_statement (binary_operator left: (string (string_start) (string_content) (string_end)) right: (identifier))))))
+
+============================================================
+2. If/Else
+============================================================
+(module (expression_statement (assignment left: (identifier) right: (integer))) (if_statement condition: (comparison_operator (identifier) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (string (string_start) (string_content) (string_end))))) alternative: (else_clause body: (block (expression_statement (assignment left: (identifier) right: (string (string_start) (string_content) (string_end))))))))
+
+============================================================
+3. Kelas dengan satu method
+============================================================
+(module (class_definition name: (identifier) body: (block (function_definition name: (identifier) parameters: (parameters (identifier) (identifier)) body: (block (expression_statement (assignment left: (attribute object: (identifier) attribute: (identifier)) right: (identifier))))))))
+
+Anak langsung node function_definition:
+  def          anonim
+  identifier   bernama
+  parameters   bernama
+  :            anonim
+  block        bernama
+
+Anak node parameters (tanda kurung ada di sini):
+  (            anonim
+  identifier   bernama
+  )            anonim
+
+============================================================
+4a. Tanda ':' dihapus
+============================================================
+def sapa(nama)
+    return nama
+
+Pohon yang dihasilkan:
+(module (ERROR (identifier) (parameters (identifier)) (identifier)))
+
+Node bermasalah yang ditemukan:
+  ERROR: ERROR di baris 1, kolom 0
+
+============================================================
+4b. Parameter dan ')' dihapus
+============================================================
+def sapa(:
+    return nama
+
+Pohon yang dihasilkan:
+(module (function_definition name: (identifier) parameters: (parameters (MISSING ")")) body: (block (return_statement (identifier)))))
+
+Node bermasalah yang ditemukan:
+  MISSING: ) di baris 1, kolom 9
+
