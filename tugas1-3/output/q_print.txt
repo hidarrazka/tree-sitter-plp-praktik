@@ -1,0 +1,6 @@
+﻿@fn  baris 10: print
+@fn  baris 23: print
+@fn  baris 15: print
+@args  baris 10: ("Luas:", hasil)
+@args  baris 23: (self.judul)
+@args  baris 15: ("Halo", nama)

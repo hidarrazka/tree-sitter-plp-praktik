@@ -1,0 +1,2 @@
+﻿@modul  baris 3: os
+@modul  baris 4: pathlib
