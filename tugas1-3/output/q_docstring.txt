@@ -1,0 +1,1 @@
+@docstring  baris 8: """Menghitung luas persegi panjang."""
