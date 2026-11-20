@@ -1,0 +1,10 @@
+@fn  baris 189: print
+@fn  baris 221: print
+@fn  baris 220: print
+@fn  baris 222: print
+@fn  baris 218: print
+@args  baris 189: (ringkas_mahasiswa(mahasiswa))
+@args  baris 220: ("Rata-rata kelas:", buku.rata_rata_kelas())
+@args  baris 221: ("Juara kelas:", buku.juara_kelas())
+@args  baris 218: ("Jumlah mahasiswa:", buku.jumlah())
+@args  baris 222: ("Kelompok:", kelompokkan_nilai(buku.daftar))

@@ -1,0 +1,163 @@
+POHON PERKIRAAN vs HASIL TREE-SITTER (Tugas 1)
+==============================================
+Bagian "perkiraan" ditulis tangan sebelum t1.py dijalankan, lalu dibandingkan
+dengan keluaran sebenarnya di output/t1.txt.
+
+Legenda: (anonim) = node tanpa nama (tidak muncul sebagai node bernama);
+node lain adalah node bernama. Field (name:, parameters:, body:, ...) hanya
+tampil pada keluaran tree-sitter, jadi tidak ditulis di perkiraan.
+
+----------------------------------------------------------------
+1. Fungsi
+   def sapa(nama):
+       return "Halo " + nama
+----------------------------------------------------------------
+Perkiraan:
+module
+`-- function_definition
+    |-- def              (anonim)
+    |-- identifier       "sapa"        bernama
+    |-- parameters
+    |   |-- (            (anonim)
+    |   |-- identifier   "nama"        bernama
+    |   `-- )            (anonim)
+    |-- :                (anonim)
+    `-- block
+        `-- return_statement
+            |-- return   (anonim)
+            `-- binary_operator
+                |-- string
+                |   |-- string_start  "      (anonim)
+                |   |-- string_content
+                |   `-- string_end    "      (anonim)
+                |-- +                 (anonim)
+                `-- identifier "nama"        bernama
+
+Hasil (output/t1.txt baris 4):
+(module (function_definition name: (identifier) parameters: (parameters
+(identifier)) body: (block (return_statement (binary_operator left: (string
+(string_start) (string_content) (string_end)) right: (identifier))))))
+
+Cocok. Struktur dan urutan anak sama; hanya nama field yang baru terlihat.
+
+----------------------------------------------------------------
+2. If/Else
+   nilai = 80
+   if nilai >= 75:
+       status = "lulus"
+   else:
+       status = "tidak lulus"
+----------------------------------------------------------------
+Perkiraan:
+module
+|-- expression_statement
+|   `-- assignment
+|       |-- identifier "nilai"        bernama
+|       |-- =                        (anonim)
+|       `-- integer 80
+`-- if_statement
+    |-- if                           (anonim)
+    |-- comparison_operator
+    |   |-- identifier "nilai"
+    |   |-- >=                       (anonim)
+    |   `-- integer 75
+    |-- :                            (anonim)
+    |-- block
+    |   `-- expression_statement > assignment > string "lulus"
+    |-- else                         (anonim)
+    |-- :                            (anonim)
+    `-- block
+        `-- expression_statement > assignment > string "tidak lulus"
+
+Hasil (output/t1.txt baris 9):
+(module (expression_statement (assignment left: (identifier) right: (integer)))
+(if_statement condition: (comparison_operator (identifier) (integer))
+consequence: (block (expression_statement (assignment left: (identifier)
+right: (string (string_start) (string_content) (string_end)))))
+alternative: (else_clause body: (block (expression_statement (assignment
+left: (identifier) right: (string (string_start) (string_content)
+(string_end))))))))
+
+Perbedaan yang ditemukan:
+  - Perkiraan: else, :, dan block menjadi anak langsung if_statement.
+  - Hasil    : grammar membungkusnya dalam node else_clause dengan field body.
+  - Bagian lain cocok.
+
+----------------------------------------------------------------
+3. Kelas dengan satu method
+   class Mahasiswa:
+       def __init__(self, nama):
+           self.nama = nama
+----------------------------------------------------------------
+Perkiraan:
+module
+`-- class_definition
+    |-- class            (anonim)
+    |-- identifier       "Mahasiswa"   bernama
+    |-- :                (anonim)
+    `-- block
+        `-- function_definition
+            |-- def               (anonim)
+            |-- identifier        "__init__"  bernama
+            |-- parameters
+            |   |-- (             (anonim)
+            |   |-- identifier    "self"      bernama
+            |   |-- ,             (anonim)
+            |   |-- identifier    "nama"      bernama
+            |   `-- )             (anonim)
+            |-- :                 (anonim)
+            `-- block
+                `-- expression_statement
+                    `-- assignment
+                        |-- attribute
+                        |   |-- identifier "self"
+                        |   |-- .              (anonim)
+                        |   `-- identifier "nama"
+                        |-- =                  (anonim)
+                        `-- identifier "nama"
+
+Hasil (output/t1.txt baris 14):
+(module (class_definition name: (identifier) body: (block (function_definition
+name: (identifier) parameters: (parameters (identifier) (identifier)) body:
+(block (expression_statement (assignment left: (attribute object: (identifier)
+attribute: (identifier)) right: (identifier))))))))
+
+Cocok. Node anonim ',' di parameters tidak terlihat pada keluaran.
+
+----------------------------------------------------------------
+4a. Tanda ':' dihapus
+   def sapa(nama)
+       return nama
+----------------------------------------------------------------
+Perkiraan: satu node ERROR membungkus pernyataan def yang rusak, di baris 1.
+Hasil:
+(module (ERROR (identifier) (parameters (identifier)) (identifier)))
+Node bermasalah: ERROR di baris 1, kolom 0.
+
+Cocok dengan perkiraan.
+
+----------------------------------------------------------------
+4b. Parameter dan ')' dihapus
+   def sapa(:
+       return nama
+----------------------------------------------------------------
+Perkiraan: parameters tetap dikenali, tetapi node ')' hilang (MISSING) di
+dalam parameters.
+Hasil:
+(module (function_definition name: (identifier) parameters: (parameters
+(MISSING ")")) body: (block (return_statement (identifier)))))
+Node bermasalah: MISSING ")" di baris 1, kolom 9.
+
+Cocok. Bedanya, return_statement di hasil tidak lagi berisi binary_operator
+karena teks "Halo " + nama sudah tidak ada pada potongan ini.
+
+----------------------------------------------------------------
+Ringkasan node anonim (minimal 3, semuanya tersembunyi dari node bernama)
+----------------------------------------------------------------
+1. def     : anak function_definition
+2. :       : anak function_definition dan class_definition
+3. ( dan ) : anak parameters
+4. return  : anak return_statement
+5. ,       : pemisah parameter
+6. = , + , >= , .  : operator
+7. string_start / string_end : tanda kutip string
