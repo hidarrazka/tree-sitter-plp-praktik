@@ -7,6 +7,8 @@ tiga hal:
 2. Fungsi yang panjangnya lebih dari 30 baris.
 3. File yang pohon sintaksnya mengandung error (sintaks rusak).
 
+Untuk JavaScript, gunakan `cek_js.py` (lihat bagian Dukungan JavaScript).
+
 ## Cara memasang
 
 ```bash
@@ -73,6 +75,37 @@ src\itsdangerous\url_safe.py:23: fungsi 'load_payload' 31 baris
 
 Catatan: seluruh file `src/` lolos `ast.parse`, jadi tidak ada file yang dilaporkan
 sebagai error pada repo ini. Itu benar, bukan bug tool.
+
+## Dukungan JavaScript (pengayaan)
+
+Skrip `cek_js.py` memakai grammar `tree-sitter-javascript` dengan tiga pemeriksaan
+yang sama polanya.
+
+Pasang dependensi:
+
+```bash
+python -m pip install tree-sitter tree-sitter-javascript
+```
+
+Jalankan:
+
+```bash
+python cek_js.py <folder>
+```
+
+Contoh dari folder `uji_js/` (`output/hasil_js.txt`):
+
+```
+uji_js\panjang.js:1: fungsi 'hitungStatistik' 77 baris
+uji_js\rusak.js:6: MISSING '}'
+uji_js\todo.js:1: // TODO: tambahkan validasi input
+uji_js\todo.js:3: // FIXME: belum menangani tipe string
+uji_js\todo.js:7: // TODO: buat unit test untuk fungsi ini
+```
+
+Yang dihitung: `function_declaration`, `method_definition` (method kelas), dan
+arrow function yang disimpan di variabel. Folder `venv`, `.venv`, `.git`,
+`node_modules`, dan `__pycache__` tetap dilewati.
 
 ## Catatan
 

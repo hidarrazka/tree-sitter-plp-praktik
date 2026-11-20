@@ -1,0 +1,5 @@
+uji_js\panjang.js:1: fungsi 'hitungStatistik' 77 baris
+uji_js\rusak.js:6: MISSING '}'
+uji_js\todo.js:1: // TODO: tambahkan validasi input
+uji_js\todo.js:3: // FIXME: belum menangani tipe string
+uji_js\todo.js:7: // TODO: buat unit test untuk fungsi ini
