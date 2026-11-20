@@ -1,0 +1,19 @@
+Error: Error when generating parser
+
+Caused by:
+    Unresolved conflict for symbol sequence:
+    
+      'not'  _expr  •  'or'  …
+    
+    Possible interpretations:
+    
+      1:  'not'  (or_expression  _expr  •  'or'  _expr)
+      2:  (not_expression  'not'  _expr)  •  'or'  …
+    
+    Possible resolutions:
+    
+      1:  Specify a higher precedence in `or_expression` than in the other rules.
+      2:  Specify a higher precedence in `not_expression` than in the other rules.
+      3:  Specify a left or right associativity in `not_expression`
+      4:  Add a conflict for these rules: `or_expression`, `not_expression`
+    
