@@ -1,0 +1,2 @@
+WHERE ((NOT (status IN (?, ?) OR title LIKE ?) AND priority >= ?) AND aktif = ?);
+Params: ['open', 'pending', '%invoice%', 2, True]
